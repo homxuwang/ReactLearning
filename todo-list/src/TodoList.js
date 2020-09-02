@@ -1,6 +1,5 @@
 import React,{Component,Fragment} from 'react'
 import TodoItem from './TodoItem'
-import Test from './Test'
 import './style.css'
 
 
@@ -18,7 +17,7 @@ class TodoList extends Component {
     }
 
     render() {
-      console.log('render')
+        //console.log('render')
         return(
             <Fragment>
                 <div>
@@ -28,6 +27,7 @@ class TodoList extends Component {
                         className='input'
                         value = { this.state.inputValue } 
                         onChange = { this.handleInputChage }
+                        ref={(input) => {this.input = input}}
                     />
                     <button 
                       onClick= {this.handleBtnClick}
@@ -35,10 +35,9 @@ class TodoList extends Component {
                       提交
                     </button>
                 </div>
-                <ul>
+                <ul ref={(ul) => {this.ul = ul}}>
                     { this.getTodoItem() }
-                </ul>                
-                <Test content={this.state.inputValue}/>
+                </ul> 
             </Fragment>
         )
     }
@@ -59,17 +58,21 @@ class TodoList extends Component {
     handleInputChage(e) { //输入框变化事件
       e.persist()
       this.setState(() => ({
-          inputValue: e.target.value
+        //ref属性中,this.input = input,即this.input就是input标签元素（不推荐使用）
+          inputValue: this.input.value 
         }))
     }
 
     handleBtnClick() { //添加功能
       //preState是指上一次的state
+      //setState是一个异步函数，并不会立即执,但是它的第二个参数可以接受一个回调函数，
+      //一些逻辑可以写在回调函数中
       this.setState((preState)=> ({
         list: [...preState.list, preState.inputValue],
         inputValue: ''
-      }))
-       
+      }),() => {
+        console.log(this.ul.querySelectorAll('div').length)
+      })      
     }
 
     handleItemDelete(index) { //删除功能 
