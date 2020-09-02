@@ -1,6 +1,7 @@
 import React,{Component,Fragment} from 'react'
-import './style.css'
 import TodoItem from './TodoItem'
+import './style.css'
+
 
 class TodoList extends Component {
 
@@ -10,6 +11,9 @@ class TodoList extends Component {
             inputValue: '',
             list: []
         }
+        this.handleInputChage = this.handleInputChage.bind(this)
+        this.handleBtnClick = this.handleBtnClick.bind(this)
+        this.handleItemDelete = this.handleItemDelete.bind(this)
     }
 
     render() {
@@ -21,55 +25,56 @@ class TodoList extends Component {
                         id="insertArea"
                         className='input'
                         value = { this.state.inputValue } 
-                        onChange = { this.handleInputChage.bind(this) }
+                        onChange = { this.handleInputChage }
                     />
-                    <button onClick= {this.handleBtnClick.bind(this)}>提交</button>
+                    <button 
+                      onClick= {this.handleBtnClick}
+                    >
+                      提交
+                    </button>
                 </div>
                 <ul>
-                    {
-                        this.state.list.map((item,index) => {
-                            return (
-                              <div>
-                                <TodoItem 
-                                  content={item} 
-                                  index={index}
-                                  deleteItem={this.handleItemDelete.bind(this)}
-                                />
-                                {/*<li 
-                                    key={index}  
-                                    onClick={this.handleItemDelete.bind(this,index)}
-                                    dangerouslySetInnerHTML={ {__html: item} } 
-                                >                           
-                                </li>*/}
-                              </div>
-                            )
-                        })
-                    }
+                    { this.getTodoItem() }
                 </ul>
             </Fragment>
         )
     }
 
-    handleInputChage = (e) => { //输入框变化事件
-        this.setState({
-            inputValue: e.target.value
-        })
+    getTodoItem() {
+      return  this.state.list.map((item,index) => {
+        return (
+            <TodoItem 
+              key={index}
+              content={item} 
+              index={index}
+              deleteItem={this.handleItemDelete}
+            />
+        )
+      })
+    }
+
+    handleInputChage(e) { //输入框变化事件
+      e.persist()
+      this.setState(() => ({
+          inputValue: e.target.value
+        }))
     }
 
     handleBtnClick() { //添加功能
-        this.setState({
-            inputValue: '',
-            list: [...this.state.list, this.state.inputValue]
-        })
+      //preState是指上一次的state
+      this.setState((preState)=> ({
+        list: [...preState.list, preState.inputValue],
+        inputValue: ''
+      }))
+       
     }
 
-    handleItemDelete(index) { //删除功能
-        const list = [...this.state.list]
+    handleItemDelete(index) { //删除功能 
+      this.setState((preState) => {          
+        const list = [...preState.list]
         list.splice(index,1)
-        this.setState({
-            list: list
-        })
-        
+        return {list: list}
+      })
     }
 }
 
