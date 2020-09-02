@@ -4,14 +4,15 @@ import PropTypes from 'prop-types'
 class TodoItem extends Component{
     constructor(props) {
       super(props)
+      //当组件的state发生改变的时候，render函数就会重新执行
       this.handelClick = this.handelClick.bind(this)
     }
 
     render(){
-      const {content} = this.props
+      const {content , test} = this.props
       return(
         <div onClick= {this.handelClick}>
-          { content }
+          {test} - { content }
         </div>
       ) 
     }
@@ -24,10 +25,17 @@ class TodoItem extends Component{
     }
 }
 
+{/*用于类型校验*/}
 TodoItem.propTypes = {
+  test: PropTypes.string.isRequired,
   content: PropTypes.string,
   deleteItem: PropTypes.func,
   index: PropTypes.number
+}
+
+{/*在这里定义属性的默认值*/}
+TodoItem.defaultProps = {
+  test: 'react hello'
 }
 
 export default TodoItem;
