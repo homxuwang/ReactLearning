@@ -1,94 +1,37 @@
-import React,{Component,Fragment} from 'react'
-import TodoItem from './TodoItem'
-import './style.css'
-import Axios from 'axios';
+import React,{Component } from 'react'
+import 'antd/dist/antd.css';
+import { Input,Button,List, Typography, Divider } from 'antd';
 
+const data = [
+  'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+  'Australian walks 100km after outback crash.',
+  'Man charged over missing wedding girl.',
+  'Los Angeles battles huge wildfires.'
+];
 
 class TodoList extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            inputValue: '',
-            list: []
-        }
-        this.handleInputChage = this.handleInputChage.bind(this)
-        this.handleBtnClick = this.handleBtnClick.bind(this)
-        this.handleItemDelete = this.handleItemDelete.bind(this)
-    }
-
-    render() {
-        //console.log('render')
-        return(
-            <Fragment>
-                <div>
-                    <label htmlFor="insertArea">输入内容</label>
-                    <input 
-                        id="insertArea"
-                        className='input'
-                        value = { this.state.inputValue } 
-                        onChange = { this.handleInputChage }
-                        ref={(input) => {this.input = input}}
-                    />
-                    <button 
-                      onClick= {this.handleBtnClick}
-                    >
-                      提交
-                    </button>
-                </div>
-                <ul ref={(ul) => {this.ul = ul}}>
-                    { this.getTodoItem() }
-                </ul> 
-            </Fragment>
-        )
-    }
-
-    componentDidMount() {
-      Axios.get('/api/todolist').then(() => {
-        alert('success')
-      }).catch(() => {alert('error')})
-    }
-
-    getTodoItem() {
-      return  this.state.list.map((item,index) => {
-        return (
-            <TodoItem 
-              key={index}
-              content={item} 
-              index={index}
-              deleteItem={this.handleItemDelete}
-            />
-        )
-      })
-    }
-
-    handleInputChage(e) { //输入框变化事件
-      e.persist()
-      this.setState(() => ({
-        //ref属性中,this.input = input,即this.input就是input标签元素（不推荐使用）
-          inputValue: this.input.value 
-        }))
-    }
-
-    handleBtnClick() { //添加功能
-      //preState是指上一次的state
-      //setState是一个异步函数，并不会立即执,但是它的第二个参数可以接受一个回调函数，
-      //一些逻辑可以写在回调函数中
-      this.setState((preState)=> ({
-        list: [...preState.list, preState.inputValue],
-        inputValue: ''
-      }),() => {
-        console.log(this.ul.querySelectorAll('div').length)
-      })      
-    }
-
-    handleItemDelete(index) { //删除功能 
-      this.setState((preState) => {          
-        const list = [...preState.list]
-        list.splice(index,1)
-        return {list: list}
-      })
-    }
+  render() {
+    return(
+      <div>
+        <div style={{marginTop:'10px',marginLeft:'10px'}}>
+          <Input placeholder='todo Info' style={{width: '300px',marginRight:'10px'}}/>
+          <Button type="primary">提交</Button>
+        </div>
+        <List
+          style={{margin:'20px 10px 10px 10px',width:'360px'}}
+          bordered
+          dataSource={data}
+          renderItem={item => (
+          <List.Item>
+                <Typography.Text mark>[ITEM]</Typography.Text> {item}
+          </List.Item>
+          )}
+        />
+      </div>
+      
+    )
+  }
 }
 
 export default TodoList
