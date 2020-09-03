@@ -1,6 +1,7 @@
 import React,{Component,Fragment} from 'react'
 import TodoItem from './TodoItem'
 import './style.css'
+import Axios from 'axios';
 
 
 class TodoList extends Component {
@@ -40,6 +41,12 @@ class TodoList extends Component {
                 </ul> 
             </Fragment>
         )
+    }
+
+    componentDidMount() {
+      Axios.get('/api/todolist').then(() => {
+        alert('success')
+      }).catch(() => {alert('error')})
     }
 
     getTodoItem() {
