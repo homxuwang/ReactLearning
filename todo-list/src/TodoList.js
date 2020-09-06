@@ -2,7 +2,7 @@ import React,{Component } from 'react'
 import TodoLIstUI from './TodoListUI'
 import store from './store/index'
 import {getInputChangeAction,getAddItemAction,getDeleteItemAction} from './store/actionCreators'
-
+import axios from 'axios'
 class TodoList extends Component {
 
   constructor(props) {
@@ -15,6 +15,11 @@ class TodoList extends Component {
     store.subscribe(this.handleStoreChange)
   }
 
+  componentDidMount() {
+    axios.get('http://localhost.charlesproxy.com:3000/list.json').then((res) => {
+      console.log(res)
+    })
+  }
   render() {
     return (
       <TodoLIstUI 
