@@ -1,8 +1,8 @@
 import React,{Component } from 'react'
 import TodoLIstUI from './TodoListUI'
 import store from './store/index'
-import {getInputChangeAction,getAddItemAction,getDeleteItemAction,initListAction} from './store/actionCreators'
-import axios from 'axios'
+import {getTodoList,getInputChangeAction,getAddItemAction,getDeleteItemAction} from './store/actionCreators'
+
 class TodoList extends Component {
 
   constructor(props) {
@@ -14,14 +14,12 @@ class TodoList extends Component {
     this.handleItemDelete = this.handleItemDelete.bind(this)
     store.subscribe(this.handleStoreChange)
   }
-  //http://localhost.charlesproxy.com:3000
+  
   componentDidMount() {
-    axios.get('http://localhost.charlesproxy.com:3000/api/todolist').then((res) => {
-      const data = res.data;
-      const action = initListAction(data)
-      store.dispatch(action)
-    })
+   const action = getTodoList()
+   store.dispatch(action)
   }
+  
   render() {
     return (
       <TodoLIstUI 
