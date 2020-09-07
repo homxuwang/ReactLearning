@@ -1,7 +1,7 @@
 import React,{Component } from 'react'
 import TodoLIstUI from './TodoListUI'
 import store from './store/index'
-import {getInputChangeAction,getAddItemAction,getDeleteItemAction} from './store/actionCreators'
+import {getInputChangeAction,getAddItemAction,getDeleteItemAction,initListAction} from './store/actionCreators'
 import axios from 'axios'
 class TodoList extends Component {
 
@@ -14,10 +14,12 @@ class TodoList extends Component {
     this.handleItemDelete = this.handleItemDelete.bind(this)
     store.subscribe(this.handleStoreChange)
   }
-
+  //http://localhost.charlesproxy.com:3000
   componentDidMount() {
-    axios.get('http://localhost.charlesproxy.com:3000/list.json').then((res) => {
-      console.log(res)
+    axios.get('http://localhost.charlesproxy.com:3000/api/todolist').then((res) => {
+      const data = res.data;
+      const action = initListAction(data)
+      store.dispatch(action)
     })
   }
   render() {
