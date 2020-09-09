@@ -1,9 +1,36 @@
+<<<<<<< HEAD
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
 
 //无状态组件
 const TodoList = (props) => {
   const {inputValue,changeInputValue,handleClick,list,handleDelete} = props
+=======
+import React,{Component } from 'react'
+import TodoLIstUI from './TodoListUI'
+import store from './store/index'
+import {getInitList,getInputChangeAction,getAddItemAction,getDeleteItemAction} from './store/actionCreators'
+
+
+class TodoList extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = store.getState()
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleStoreChange = this.handleStoreChange.bind(this)
+    this.handleButtonClick = this.handleButtonClick.bind(this)
+    this.handleItemDelete = this.handleItemDelete.bind(this)
+    store.subscribe(this.handleStoreChange)
+  }
+  
+  componentDidMount() {
+    const action = getInitList()
+    store.dispatch(action)
+  }
+  
+  render() {
+>>>>>>> 6d076b98fc7bd531e2918e79975fcf0fccd17768
     return (
       <div>
           <div>
