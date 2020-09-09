@@ -1,12 +1,11 @@
 
-
 const defaultState = {
-    inputValue:'',
+    inputValue: '',
     list:[]
 }
 
-export default (state = defaultState,action) => {
-    if (action.type === "changeInputValue") {
+export default ( state = defaultState,action) => {
+    if(action.type === 'changeInputValue'){
         const newState = JSON.parse(JSON.stringify(state))
         newState.inputValue = action.value
         return newState
@@ -17,7 +16,7 @@ export default (state = defaultState,action) => {
         newState.inputValue = ' '
         return newState
     }
-    if (action.type === 'deleteItem') {
+    if(action.type === 'deleteItem'){
         const newState = JSON.parse(JSON.stringify(state))
         newState.list.splice(action.index,1)
         return newState
