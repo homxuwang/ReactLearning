@@ -11,6 +11,7 @@ import {
     Button,
     SearchWrapper
 } from './style'
+
 class Header extends Component {
   constructor(props) {
     super(props)
