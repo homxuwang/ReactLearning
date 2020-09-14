@@ -1,6 +1,7 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {CSSTransition} from 'react-transition-group'
+import { connect } from 'react-redux'
+import { CSSTransition } from 'react-transition-group'
+import { actionCreators }  from './store'
 
 import {
     HeaderWrapper,
@@ -12,6 +13,8 @@ import {
     Button,
     SearchWrapper
 } from './style'
+
+
 //Header为无状态组件
 const Header = (props) => {
   return (
@@ -91,7 +94,7 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    focused: state.focused
+    focused: state.header.focused
   }
 }
 
@@ -101,13 +104,13 @@ const mapDispatchToProps = (dispatch) => {
       const action = {
         type: 'search_focus'
       }
-      dispatch(action)
+      dispatch(actionCreators.searchFocus())
     },
     handleInputBlur() {
       const action = {
         type: 'search_blur'
       }
-      dispatch(action)
+      dispatch(actionCreators.searchBlur())
     }
   }
 }
