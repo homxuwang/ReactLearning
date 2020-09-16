@@ -3,14 +3,14 @@ import { createGlobalStyle} from 'styled-components'
 export const Globalstyle1 = createGlobalStyle`
   @font-face {
     font-family: "iconfont";
-    src: url('./iconfont.eot?t=1599708733486'); /* IE9 */
-    src: url('./iconfont.eot?t=1599708733486#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAP8AAsAAAAACBQAAAOvAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqDUIMmATYCJAMQCwoABCAFhG0HRxsXB1GUzM0e2cdh3MaF5jQqm7QJO7/SWzx8jbX3d/eOPTEsSRKNFn06iekmoUMlQaikREiERPfpRP7/96ybpppkls5K6YgKXjqp0pO+FfwH6muEFfTHvdP/d4LzWZbLWJPWpjqPugCjCRTQ2IusgALEmBvGrryI9QTa5oxCHMal5IBRYXQLxJ1s5sCYMis1maEKzZKxRTyDTk2PmmoAT/7n4xe8wkjSyIy+RxexIkR8dH5uJB/+T1fiIiAZzwk2iYx1oBBXpe4TZBhbR2or39HaAqoq8TH5zO+58f9/KN2Lupp/eYQkE01GehdsIFU+MYnNI/jY4pH4rBo3iRdthYlHAG+YnHlUUqRpd2Odolm3CdKF9HWitTWvuTmnpSV30fVwtGbRnhkTr1/PTwoL7tLa2o7Kc8+hrHRh0dq+1ObuBdwZehEAFdRFamEtMSM/f4Y/OCT36E6YvotedIUgrLl5J1NsJAQ9W3fnqM0tXXLy11wP3mbyjEe8oRAzroTv13Q9fO2DyoXbe93+PPToh+AKQ9u2pcOUcM2qK1dWZVPgCp15V165uiqFO4e3tG27oad3T1+zPPyWZx84MBsoSOjSzNbEQk8AfxlcvIhvGBbTgNr+56NbLWHpuZooXg67rv0d5sLXAkyEbo9VhufJbUrp5IigJ2X5uKpHl989B38c3BfevoyKhqW+1fWYE2gvE/usCsVjpww8Ej//wEo25UDhqMKK6INn2xB/ugmwzLTm0rzY4X/xzQRis09UahFMXC4v4yNlcvDDxx2zyGq+86yVfT1vgRPg/xJ5kYz00f8ooHXagN/aTloo7FLeLuSrkb6uovf7C6HI+39JC/0k/0bSWvITJS1ziiozLKXIcluseYrtRDcJbW38uhTj7o2hnWqdTqimYkjGzEJWzaOFXIeGjg1oqnagbU385I4JKlKUFlbNARCGDkDS9wrZUA1ayLvQMO0tNA2DhLbj6DRnx2LIVLSKOIxEhp/AyILikCwbpoLMLGQeY+PUpMxn5iHVJQcZT9Yjm4xHDqSOMcA11uyFscRIqmJn4sBmyGZTGKeqWJCA2UqMnUEmk1T2IlZQ7EA5oEI4GCJi8CZgyAQKB8ktjFG592dBzMaw4ag1WRX+PIjKRa6d4Ynl0QKNVztaZV3LJS5jmXnBMAlDolLYMeKAE7GZMQXDWd7KAhFgrMoeEacgJpRPaqtm59fan3AVtBnzlEiRo0RD+4JzmEXOIrvDNZEcnYEcrglj7JzCywAA') format('woff2'),
-    url('./iconfont.woff?t=1599708733486') format('woff'),
-    url('./iconfont.ttf?t=1599708733486') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-    url('./iconfont.svg?t=1599708733486#iconfont') format('svg'); /* iOS 4.1- */
+    src: url('./iconfont.eot?t=1600245175642'); /* IE9 */
+    src: url('./iconfont.eot?t=1600245175642#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAARIAAsAAAAACKgAAAP5AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqEQIQGATYCJAMUCwwABCAFhG0HThuYB8gOJS3BkAB4IxlgPPz/ft/2uffcP2/uRzzBJMSiNXx1PGnCExPKVBJUQqZaZEpH3Ob7TT2gCnNhZlBTI8mREiOPXEX1ayb6JZ5kYvpV2cE1dVGCefY2l8iybtooAEcJNKCItiIKkA0Q57xh7OIy9hPopqyG7QmJSgI2kjYsEOcFJQdsYhpZkhwGYZQzN8Vl0AzlIn4DAJfc98dr4BA2FK3Sxu49GawAfs+mfNxHVP+vdsRGAW5/JjCLqNgISOJCruU8wvdtROjS9yzsAHSDojyb8n7Lh+Fj/P//yIIVybr+h0dRpSBGNMkchN8hzp3jmgiFZy4Ilec2CMmLeN65SBqSdRS4CsQExC+/S1GksnDitDE2w1KKsS1KOmcEDx4kYUnJmNmcWmNKSYlGVRvjU8+b+ExQcvKCGTOZUnI6Go3JbWZfONC2p6Y0m4VZGVcxmcaTh8ckkWoqPWNwHrl2Rhp3hmoDevRZsvUWVpOaWuNO9ko+uhPM7KLarmDYueSUk1Emygt9tu3O1WuNU5NSB8yeG1hHdcQRsjDpiu+F982+gy/zW7fPfvJ5zbWfQ2fT05+xBn+86ejRJtyvSnvK75zF8B+Lc5mBm4ZqY6X/a40Fniesx807ulz0xfuuXOmrOtNmWev2XrnaV3z1K4zzxl2Z5TjL+dW3Wn/gQD0QEtCM1+Mhy2HCXwZm+dC7y4PuwnH/ZYEmlU9sMh4gE3zMObRtGl1zYzHLnYy4IkUYm01F+nm8PZaKrs+cOjRr1a8lU+DbpoUZy6O/Wc5scNfmKOb2eaPCikVHQpsP9DJRB9JXp+cFHjw7FvveSkAXO3CpKXa4XnxTgq11CojOAKVrc3Nk/gKx5NXjSQnEDdmUut559o+5Afh/qV4k/F30fzRA35a5/RGfce/0za+5473+2VAJbje9OwFz/lcnqDPAa5WqzX3/3JpFKfM1bUsx3+SI1mZrRKNIVR1v3bHI835sS4HQFAaWC6GYsAKqwUp04jdCM7YJRgbbodsgdPHYYhJC5CTWawAQFjgAxTy3oFrgJjrxz6BZ5huMLAgCusMxec2x1SGQgRLkEFTQshJakIs63tAj0ktOgMoCDSdF+S45BUoGwUnbM3bJYCjUQamPCYZCpQNCPM1LopYOAYdBjUak9ZKognLE5COk92BZPu9BjFzUAtJuEoiDQAo0mRI0gZxIh7crI2Tq9QkgpQIaHKmkoMSYApIYCK3T7DHsaqBDJbpaBefS2aCQkgME4fEgnkSkRQuBJkij+0Q0fX4vFUgOYeS38Oh5YFE5vq6EGV+mvcZN0GlntChRI6PFSE7rBR3JczqlglMJ9nTcn6PioM5QUqDlRJkAAAAAAA==') format('woff2'),
+    url('./iconfont.woff?t=1600245175642') format('woff'),
+    url('./iconfont.ttf?t=1600245175642') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('./iconfont.svg?t=1600245175642#iconfont') format('svg'); /* iOS 4.1- */
   }
-  
+
   .iconfont {
     font-family: "iconfont" !important;
     font-size: 16px;
@@ -19,6 +19,3 @@ export const Globalstyle1 = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 `
-
-
-
