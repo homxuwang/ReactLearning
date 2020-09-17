@@ -1,11 +1,36 @@
 import React,{ Component } from 'react'
-
-class Topic extends Component {
+import {connect} from 'react-redux'
+import { 
+  TopicWrapper,
+  TopicItem
+ } from '../style'
+class Topic extends Component {  
     render() {
+      const {list} = this.props
         return(
-            <div>Topic</div>
+            <TopicWrapper>
+              {
+                list.map((item) => {
+                  return(
+                    <TopicItem key={item.get('id')}>
+                      <img 
+                        src={item.get('imgUrl')}
+                        className='topic-pic'
+                        alt=''
+                      />
+                      {item.get('title')}
+                    </TopicItem>
+                  )
+                })
+              }                
+            </TopicWrapper>
         )
     }
 }
 
-export default Topic
+const mapStateToProps = (state) => ({
+  list: state.getIn(['home','topicList'])
+})
+
+
+export default connect(mapStateToProps,null)(Topic)
